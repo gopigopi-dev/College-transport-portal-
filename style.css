@@ -1,0 +1,122 @@
+/* ---------- Theme: "Night Route" – dark navy, amber and teal ---------- */
+:root{
+  --bg:#0b1220; --card:#121c31; --line:#25324f; --ink:#e9efff; --muted:#93a4c7;
+  --amber:#ffb703; --teal:#2dd4bf;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Segoe UI",system-ui,sans-serif; color:var(--ink); background:var(--bg);
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:36px 36px; min-height:100vh;
+}
+button,select,input{font:inherit;color:inherit}
+
+/* ---------- Header & navigation ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;
+     background:rgba(11,18,32,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{font-size:26px;background:var(--amber);border-radius:12px;padding:6px 9px}
+.brand small{display:block;color:var(--muted);font-size:12px}
+nav{display:flex;gap:6px}
+nav button{background:none;border:0;padding:9px 16px;border-radius:999px;color:var(--muted);cursor:pointer;transition:.2s}
+nav button span{margin-right:6px}
+nav button:hover{color:var(--ink)}
+nav button.active{background:var(--amber);color:#1b1300;font-weight:600}
+.clock{font-family:Consolas,monospace;color:var(--teal);border:1px solid var(--line);padding:6px 12px;border-radius:8px}
+
+main{max-width:1100px;margin:auto;padding:36px 24px 60px}
+.view{display:none;animation:fade .4s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2{font-size:30px;margin-bottom:4px}
+.sub{color:var(--muted);margin-bottom:22px}
+.tag{color:var(--amber);letter-spacing:2px;font-size:12px;font-weight:700}
+
+/* ---------- Home ---------- */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;margin-bottom:34px}
+h1{font-size:50px;line-height:1.08;margin:10px 0 16px}
+h1 em{color:var(--amber);font-style:normal;border-bottom:4px solid var(--teal)}
+.intro p{color:var(--muted);line-height:1.6}
+.intro b{color:var(--ink)}
+.quick{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{background:var(--amber);color:#1b1300;border:0;padding:11px 20px;border-radius:10px;font-weight:600;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,183,3,.3)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--amber);box-shadow:none}
+
+/* boarding pass card */
+.pass{background:var(--card);border-radius:20px;border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.4);overflow:hidden}
+.pass-top{padding:20px 22px;display:grid;gap:10px}
+select,input{background:#0d1527;border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.pass-body{position:relative;padding:20px 22px 24px;border-top:2px dashed var(--line);min-height:180px}
+.pass-body::before,.pass-body::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--bg)}
+.pass-body::before{left:-11px}.pass-body::after{right:-11px}
+.hint{color:var(--muted);text-align:center;padding-top:50px}
+.pass-row{display:flex;justify-content:space-between;align-items:center}
+.pass-row big{font-size:38px;font-weight:800;color:var(--c,var(--amber))}
+.pass-row small,.pass-body small{color:var(--muted);display:block;font-size:12px}
+.countdown{font-family:Consolas,monospace;font-size:34px;color:var(--teal);margin-top:14px;letter-spacing:2px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+.stats b{display:block;font-size:26px;color:var(--amber)}
+.stats span{color:var(--muted);font-size:13px}
+
+/* ---------- Route tickets ---------- */
+.grid{align-items:start;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.ticket{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:16px;overflow:hidden}
+.t-head{display:flex;gap:14px;align-items:center;padding:18px 20px}
+.badge{background:var(--c);color:#06101f;font-weight:800;padding:10px 12px;border-radius:10px;font-family:Consolas,monospace}
+.t-head p{color:var(--muted);font-size:14px;margin-top:2px}
+.meta{position:relative;display:flex;justify-content:space-between;padding:12px 20px;border-top:2px dashed var(--line);font-size:13px;color:var(--muted);white-space:nowrap}
+.meta::before,.meta::after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg)}
+.meta::before{left:-13px}.meta::after{right:-11px}
+.ticket .btn{margin:0 20px 18px;width:calc(100% - 40px);padding:9px}
+.timeline{list-style:none;max-height:0;overflow:hidden;padding:0 20px 0 34px;position:relative;transition:max-height .6s ease,padding .4s}
+.ticket.open .timeline{max-height:400px;padding-bottom:18px}
+.timeline::before{content:"";position:absolute;left:23px;top:6px;bottom:24px;width:3px;background:var(--line);border-radius:2px}
+.timeline li{display:flex;justify-content:space-between;padding:8px 0;opacity:0;transform:translateX(-14px);position:relative}
+.timeline li i{position:absolute;left:-16px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px var(--card)}
+.ticket.open li{opacity:1;transform:none;transition:.4s ease calc(var(--i)*130ms)}
+.timeline time{font-family:Consolas,monospace;color:var(--teal)}
+
+/* ---------- Pickup table ---------- */
+.field{display:grid;gap:6px;max-width:280px;margin-bottom:18px;color:var(--muted);font-size:14px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th{text-align:left;padding:14px 18px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--line)}
+td{padding:13px 18px;border-bottom:1px solid #1a2743}
+tr:last-child td{border:0}
+tbody tr:hover{background:#17233d}
+.pill{background:var(--c);color:#06101f;font-weight:700;padding:3px 10px;border-radius:999px;font-family:Consolas,monospace;font-size:13px}
+td.time{font-family:Consolas,monospace;color:var(--teal)}
+
+/* ---------- Search ---------- */
+.chips{display:flex;gap:8px;margin:14px 0}
+.chip{background:none;border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer;color:var(--muted)}
+.chip.on{background:var(--teal);color:#032b26;border-color:var(--teal);font-weight:600}
+.count{color:var(--muted);font-size:14px;margin-bottom:14px}
+mark{background:var(--amber);color:#1b1300;border-radius:3px;padding:0 2px}
+.result{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:14px;padding:16px 18px}
+.result small{color:var(--muted);letter-spacing:1px;font-size:11px}
+.result h3{margin:4px 0}
+.result p{color:var(--muted);font-size:14px}
+.empty{color:var(--muted);padding:30px 0}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:24px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  h1{font-size:38px}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .top{padding:12px 16px}
+  .brand small{display:none}
+  main{padding:24px 16px 100px}
+  /* navigation becomes a bottom tab bar on phones */
+  nav{position:fixed;bottom:0;left:0;right:0;justify-content:space-around;background:#0b1220;border-top:1px solid var(--line);padding:8px;z-index:20}
+  nav button{display:flex;flex-direction:column;font-size:11px;padding:6px 10px;border-radius:12px}
+  nav button span{margin:0 0 2px;font-size:18px}
+}

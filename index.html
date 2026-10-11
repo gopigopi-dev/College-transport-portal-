@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusRide | College Transport Information Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top bar: logo, navigation tabs and live clock -->
+  <header class="top">
+    <div class="brand">
+      <span class="logo">🚌</span>
+      <div><b>CampusRide</b><small>College Transport Portal</small></div>
+    </div>
+    <nav id="nav">
+      <button data-view="home" class="active"><span>🏠</span>Home</button>
+      <button data-view="routes"><span>🛣️</span>Bus Routes</button>
+      <button data-view="pickup"><span>📍</span>Pickup Points</button>
+      <button data-view="search"><span>🔎</span>Search</button>
+    </nav>
+    <div class="clock" id="clock">--:--</div>
+  </header>
+
+  <main>
+    <!-- 1. HOME / DASHBOARD -->
+    <section id="home" class="view active">
+      <div class="hero">
+        <div class="intro">
+          <p class="tag">COLLEGE TRANSPORT SERVICE</p>
+          <h1>Your ride to campus, <em>sorted.</em></h1>
+          <p>Our college runs <b id="sBuses">0</b> buses covering <b id="sStops">0</b> pickup points across the city.
+             Check bus numbers, routes, pickup points and timings in one place.</p>
+          <div class="quick">
+            <button class="btn" data-go="routes">View Bus Routes</button>
+            <button class="btn ghost" data-go="pickup">Pickup Timings</button>
+            <button class="btn ghost" data-go="search">Search</button>
+          </div>
+        </div>
+
+        <!-- Boarding-pass style "Find My Bus" card (JavaScript interaction) -->
+        <div class="pass">
+          <div class="pass-top">
+            <p class="tag">FIND MY BUS</p>
+            <select id="myStop"></select>
+          </div>
+          <div class="pass-body" id="passBody"></div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div><b id="sBuses2">0</b><span>College Buses</span></div>
+        <div><b id="sStops2">0</b><span>Pickup Points</span></div>
+        <div><b>By 8:20 AM</b><span>All Buses Reach Campus</span></div>
+        <div><b>4:45 PM</b><span>Earliest Return Trip</span></div>
+      </div>
+    </section>
+
+    <!-- 2. BUS ROUTES -->
+    <section id="routes" class="view">
+      <h2>Bus Routes</h2>
+      <p class="sub">Tap “View route” on any bus to see every stop and timing.</p>
+      <div class="grid" id="routeGrid"></div>
+    </section>
+
+    <!-- 3. PICKUP POINTS -->
+    <section id="pickup" class="view">
+      <h2>Pickup Points &amp; Timings</h2>
+      <p class="sub">Morning pickup time for every stop, sorted by time.</p>
+      <label class="field">Show bus
+        <select id="busFilter"></select>
+      </label>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pickup Location</th><th>Bus No.</th><th>Route Name</th><th>Pickup Time</th></tr></thead>
+          <tbody id="pickupBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. SEARCH / FILTER -->
+    <section id="search" class="view">
+      <h2>Search Transport</h2>
+      <p class="sub">Type a bus number, route name or pickup point.</p>
+      <input id="q" type="search" placeholder="Try “B03”, “Green” or “Guindy”…" autocomplete="off">
+      <div class="chips" id="chips">
+        <button class="chip on" data-type="all">All</button>
+        <button class="chip" data-type="buses">Buses</button>
+        <button class="chip" data-type="stops">Pickup Points</button>
+      </div>
+      <p class="count" id="count"></p>
+      <div class="grid" id="results"></div>
+    </section>
+  </main>
+
+  <footer>© 2026 CampusRide · College Transport Information Portal · Built with HTML, CSS &amp; JavaScript</footer>
+  <script src="script.js"></script>
+</body>
+</html>
